@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechForge LMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-effects" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="logo">⚙️ TechForge LMS</div>
+    <nav class="menu">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#trilhas">Trilhas</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#comunidade">Comunidade</a>
+    </nav>
+    <div class="theme-switch" role="group" aria-label="Selecionar tema">
+      <button id="themeDarkBtn" class="ghost-btn" data-theme="dark">🌙 Escuro</button>
+      <button id="themeLightBtn" class="ghost-btn" data-theme="light">☀️ Claro</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="tag">Plataforma LMS futurista para ensino de tecnologia</p>
+        <h1>Domine coding, IA, dados e cloud com uma experiência imersiva.</h1>
+        <p>Aprendizado hands-on com trilhas guiadas, progresso inteligente e comunidade ativa em um só lugar.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#catalogo">Iniciar jornada</a>
+          <button class="secondary-btn" id="randomCourseBtn">Curso recomendado</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <article>
+          <h3 id="statCourses">0</h3>
+          <span>Cursos disponíveis</span>
+        </article>
+        <article>
+          <h3 id="statLessons">0</h3>
+          <span>Aulas no total</span>
+        </article>
+        <article>
+          <h3 id="statProgress">0%</h3>
+          <span>Progresso médio</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="catalogo" class="panel">
+      <div class="panel-head">
+        <h2>Catálogo de cursos</h2>
+        <input id="searchInput" type="search" placeholder="Buscar por título, nível ou categoria" />
+      </div>
+      <div id="courseList" class="card-grid"></div>
+    </section>
+
+    <section id="trilhas" class="panel">
+      <h2>Trilhas sugeridas</h2>
+      <div id="trackList" class="track-grid"></div>
+    </section>
+
+    <section id="dashboard" class="panel dashboard">
+      <h2>Dashboard do aluno</h2>
+      <div class="dashboard-grid">
+        <article>
+          <h3>Cursos em andamento</h3>
+          <ul id="inProgressList"></ul>
+        </article>
+        <article>
+          <h3>Conquistas</h3>
+          <ul id="achievementList"></ul>
+        </article>
+        <article class="quiz-box">
+          <h3>Quiz rápido</h3>
+          <p id="quizQuestion"></p>
+          <div id="quizOptions"></div>
+          <p id="quizFeedback" aria-live="polite"></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="comunidade" class="panel">
+      <h2>Comunidade e suporte</h2>
+      <div class="community-layout">
+        <form id="postForm" class="post-form">
+          <label for="postInput">Compartilhe uma dúvida ou insight</label>
+          <textarea id="postInput" rows="4" placeholder="Ex: Qual sequência ideal para aprender IA aplicada?" ></textarea>
+          <button type="submit" class="primary-btn">Publicar</button>
+        </form>
+        <aside>
+          <h3>Feed da turma</h3>
+          <ul id="postList" class="post-list"></ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>TechForge LMS • Plataforma demonstrativa de ensino tech com experiência futurista</p>
+  </footer>
+
+  <template id="courseTemplate">
+    <article class="course-card">
+      <div>
+        <p class="badge"></p>
+        <h3></h3>
+        <p class="meta"></p>
+      </div>
+      <div class="course-actions">
+        <progress max="100" value="0"></progress>
+        <button class="primary-btn">Continuar aula</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
