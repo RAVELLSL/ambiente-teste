@@ -3,122 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechForge LMS</title>
+  <title>NexaTech Academy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="bg-effects" aria-hidden="true"></div>
+  <div class="mesh-bg" aria-hidden="true"></div>
+
   <header class="topbar">
-    <div class="logo">⚙️ TechForge LMS</div>
-    <nav class="menu">
-      <a href="#catalogo">Catálogo</a>
+    <a href="#" class="brand">🚀 NexaTech Academy</a>
+    <nav class="nav-links">
+      <a href="#home">Início</a>
+      <a href="#biblioteca">Biblioteca</a>
       <a href="#trilhas">Trilhas</a>
-      <a href="#dashboard">Dashboard</a>
       <a href="#comunidade">Comunidade</a>
     </nav>
-    <div class="theme-switch" role="group" aria-label="Selecionar tema">
-      <button id="themeDarkBtn" class="ghost-btn" data-theme="dark">🌙 Escuro</button>
-      <button id="themeLightBtn" class="ghost-btn" data-theme="light">☀️ Claro</button>
-    </div>
+    <button id="themeToggle" class="ghost-btn" aria-label="Alternar tema">🌙 Modo noturno</button>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-content">
-        <p class="tag">Plataforma LMS futurista para ensino de tecnologia</p>
-        <h1>Domine coding, IA, dados e cloud com uma experiência imersiva.</h1>
-        <p>Aprendizado hands-on com trilhas guiadas, progresso inteligente e comunidade ativa em um só lugar.</p>
-        <div class="hero-actions">
-          <a class="primary-btn" href="#catalogo">Iniciar jornada</a>
-          <button class="secondary-btn" id="randomCourseBtn">Curso recomendado</button>
+    <section id="home" class="hero card">
+      <div class="hero-copy">
+        <p class="tag">Plataforma de ensino em vídeo para acelerar sua carreira em tecnologia</p>
+        <h1>Aprenda com trilhas visuais, projetos guiados e aulas curtas de alto impacto.</h1>
+        <p>Uma experiência leve e intuitiva para você estudar Front-end, Back-end, IA, Cloud e Segurança com foco no mercado.</p>
+        <div class="cta-row">
+          <button class="primary-btn" id="startJourneyBtn">Começar agora</button>
+          <button class="secondary-btn" id="shuffleVideoBtn">Sortear aula</button>
+        </div>
+        <div class="stats-row">
+          <article><strong id="statVideos">0</strong><span>Vídeos</span></article>
+          <article><strong id="statHours">0h</strong><span>Horas</span></article>
+          <article><strong id="statTracks">0</strong><span>Trilhas</span></article>
         </div>
       </div>
-      <div class="hero-stats">
-        <article>
-          <h3 id="statCourses">0</h3>
-          <span>Cursos disponíveis</span>
-        </article>
-        <article>
-          <h3 id="statLessons">0</h3>
-          <span>Aulas no total</span>
-        </article>
-        <article>
-          <h3 id="statProgress">0%</h3>
-          <span>Progresso médio</span>
-        </article>
+
+      <div class="hero-player">
+        <div class="player-head">
+          <p id="featuredCategory">• FRONT-END</p>
+          <span id="featuredDuration">00:00</span>
+        </div>
+        <h2 id="featuredTitle">Carregando aula em destaque...</h2>
+        <p id="featuredDescription"></p>
+        <div class="video-frame" role="img" aria-label="Prévia da aula">
+          <div class="play-icon">▶</div>
+          <p id="featuredInstructor">Mentor(a): --</p>
+        </div>
+        <div class="player-actions">
+          <button class="primary-btn" id="watchNowBtn">Assistir aula</button>
+          <button class="ghost-btn" id="saveLaterBtn">+ Salvar para depois</button>
+        </div>
       </div>
     </section>
 
-    <section id="catalogo" class="panel">
-      <div class="panel-head">
-        <h2>Catálogo de cursos</h2>
-        <input id="searchInput" type="search" placeholder="Buscar por título, nível ou categoria" />
+    <section class="highlights">
+      <article class="mini-card"><strong>Plano semanal inteligente</strong><span>Rotina automática baseada no seu ritmo.</span></article>
+      <article class="mini-card"><strong>Projetos em cada trilha</strong><span>Portfólio real para entrevistas e freelas.</span></article>
+      <article class="mini-card"><strong>Comunidade ativa</strong><span>Feedback rápido de mentores e alunos.</span></article>
+    </section>
+
+    <section id="biblioteca" class="section-block card">
+      <div class="section-head">
+        <h2>Biblioteca de vídeos</h2>
+        <div class="filters">
+          <input type="search" id="searchInput" placeholder="Buscar por título, nível ou tecnologia" />
+          <select id="categoryFilter" aria-label="Filtrar por categoria">
+            <option value="all">Todas as categorias</option>
+          </select>
+        </div>
       </div>
-      <div id="courseList" class="card-grid"></div>
+      <div id="videoGrid" class="video-grid"></div>
     </section>
 
-    <section id="trilhas" class="panel">
-      <h2>Trilhas sugeridas</h2>
-      <div id="trackList" class="track-grid"></div>
+    <section id="trilhas" class="section-block card">
+      <h2>Trilhas de carreira</h2>
+      <div id="trackGrid" class="track-grid"></div>
     </section>
 
-    <section id="dashboard" class="panel dashboard">
-      <h2>Dashboard do aluno</h2>
-      <div class="dashboard-grid">
-        <article>
-          <h3>Cursos em andamento</h3>
-          <ul id="inProgressList"></ul>
-        </article>
-        <article>
-          <h3>Conquistas</h3>
-          <ul id="achievementList"></ul>
-        </article>
-        <article class="quiz-box">
-          <h3>Quiz rápido</h3>
-          <p id="quizQuestion"></p>
-          <div id="quizOptions"></div>
-          <p id="quizFeedback" aria-live="polite"></p>
-        </article>
-      </div>
-    </section>
-
-    <section id="comunidade" class="panel">
-      <h2>Comunidade e suporte</h2>
-      <div class="community-layout">
+    <section id="comunidade" class="section-block card community">
+      <div>
+        <h2>Painel da comunidade</h2>
+        <p>Compartilhe dúvidas, receba feedback e evolua com networking tech.</p>
         <form id="postForm" class="post-form">
-          <label for="postInput">Compartilhe uma dúvida ou insight</label>
-          <textarea id="postInput" rows="4" placeholder="Ex: Qual sequência ideal para aprender IA aplicada?" ></textarea>
-          <button type="submit" class="primary-btn">Publicar</button>
+          <textarea id="postInput" rows="3" placeholder="Ex: alguém recomenda uma stack para projetos com IA + front-end?"></textarea>
+          <button class="primary-btn" type="submit">Publicar no feed</button>
         </form>
-        <aside>
-          <h3>Feed da turma</h3>
-          <ul id="postList" class="post-list"></ul>
-        </aside>
       </div>
+      <aside>
+        <h3>Feed ao vivo</h3>
+        <ul id="feedList" class="feed-list"></ul>
+      </aside>
     </section>
   </main>
 
   <footer>
-    <p>TechForge LMS • Plataforma demonstrativa de ensino tech com experiência futurista</p>
+    <p>NexaTech Academy • Ensino de tecnologia com vídeos práticos e UX imersiva.</p>
   </footer>
 
-  <template id="courseTemplate">
-    <article class="course-card">
-      <div>
-        <p class="badge"></p>
-        <h3></h3>
-        <p class="meta"></p>
+  <template id="videoCardTemplate">
+    <article class="video-card">
+      <div class="video-card-top">
+        <span class="pill"></span>
+        <span class="duration"></span>
       </div>
-      <div class="course-actions">
+      <h3></h3>
+      <p class="meta"></p>
+      <div class="progress-wrap">
         <progress max="100" value="0"></progress>
-        <button class="primary-btn">Continuar aula</button>
+        <small></small>
       </div>
+      <button class="secondary-btn">Continuar assistindo</button>
     </article>
   </template>
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
