@@ -185,11 +185,12 @@ function setRandomFeatured() {
 }
 
 function toggleTheme() {
-  document.body.classList.toggle('light');
-  refs.themeToggle.textContent = document.body.classList.contains('light') ? '☀️ Tema' : '🌙 Tema';
+  document.body.classList.toggle('dark');
+  refs.themeToggle.textContent = document.body.classList.contains('dark') ? '☀️ Modo claro' : '🌙 Modo noturno';
 }
 
 function initEvents() {
+  refs.themeToggle.textContent = document.body.classList.contains('dark') ? '☀️ Modo claro' : '🌙 Modo noturno';
   refs.searchInput.addEventListener('input', applyFilters);
   refs.categoryFilter.addEventListener('change', applyFilters);
   refs.postForm.addEventListener('submit', handlePost);
